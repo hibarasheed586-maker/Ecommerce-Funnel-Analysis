@@ -2,7 +2,7 @@
 
 Analysis of a simulated e-commerce customer journey — **Homepage → Search → Product View → Add to Cart → Checkout → Purchase** — to find where users drop off, why, and what to do about it. Framed as a product manager would: **Problem → Hypothesis → Recommendation → Success KPI**, not just "here's a chart."
 
-**Tools:** SQL · Excel · Tableau
+**Tools:** Python · SQL · Excel
 **Dataset:** 50,000 simulated user sessions
 
 ---
@@ -24,8 +24,6 @@ Mobile is the **largest traffic segment** but converts at less than half the des
 > **Recommendation:** Redesign the mobile product page (price/rating/sticky CTA above the fold); A/B test a persistent bottom add-to-cart bar.
 > **Success KPI:** Product View → Add to Cart conversion rate, mobile segment.
 
-Full write-up, including traffic-source, category, and new-vs-returning segmentation, is in [`Ecommerce_Funnel_Project_Report.docx`](./Ecommerce_Funnel_Project_Report.docx).
-
 ---
 
 ## Repository Contents
@@ -36,7 +34,6 @@ Full write-up, including traffic-source, category, and new-vs-returning segmenta
 | `generate_data.py` | Script that generates the dataset (fixed random seed, fully reproducible) |
 | `funnel_analysis.sql` | SQL schema + queries: funnel conversion/drop-off, device/traffic-source/category/user-type segmentation, AOV, monthly trend |
 | `Ecommerce_Funnel_Analysis.xlsx` | Excel workbook — raw data + live formula-driven analysis tabs (SUMIFS/AVERAGEIFS, no hardcoded numbers) |
-| `Ecommerce_Funnel_Project_Report.docx` | Full report: methodology, findings, and the Problem → Hypothesis → Recommendation → KPI write-up |
 
 ### Dataset schema
 
@@ -79,9 +76,6 @@ python3 generate_data.py
 ```
 Note: query #9 (monthly trend) uses `DATE_FORMAT`, which is MySQL/SQL Server syntax — swap in `strftime('%Y-%m', Session_Date)` for SQLite or `TO_CHAR(Session_Date, 'YYYY-MM')` for PostgreSQL.
 
-**Build a Tableau dashboard:**
-Connect Tableau to `ecommerce_funnel_data.csv` (or the `Raw_Data` tab of the Excel file). The data is already shaped for a funnel chart — one 0/1 flag column per stage, plus `Device`, `Traffic_Source`, `Product_Category`, and `User_Type` as dimensions for filters/segmentation.
-
 ---
 
 ## Methodology Notes
@@ -93,7 +87,7 @@ Connect Tableau to `ecommerce_funnel_data.csv` (or the `Raw_Data` tab of the Exc
 
 ## Resume Bullets
 
-**E-commerce Customer Funnel Analysis & Drop-off Optimization | SQL, Excel, Tableau**
+**E-commerce Customer Funnel Analysis & Drop-off Optimization | Python, SQL, Excel**
 - Analyzed 50K+ session-level customer journeys across homepage, search, product-view, cart and checkout stages using SQL and Excel to identify a 56% drop-off at the Product View → Add to Cart stage, the single largest leak in the funnel.
 - Segmented funnel performance by device, traffic source, product category and user type; identified that mobile sessions (56% of traffic) converted at less than half the desktop rate at the cart stage despite comparable order values, isolating a UX/friction issue rather than a demand issue.
 - Translated findings into a product recommendation using a Problem → Hypothesis → Recommendation → KPI framework, proposing a mobile product-page redesign and defining stage-wise conversion rate as the primary success metric for a prioritized A/B test.
