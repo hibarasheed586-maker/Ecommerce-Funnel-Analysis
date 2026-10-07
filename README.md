@@ -32,7 +32,8 @@ Mobile is the **largest traffic segment** but converts at less than half the des
 |---|---|
 | `ecommerce_funnel_data.csv` | Raw session-level dataset (50,000 rows) — one row per session |
 | `generate_data.py` | Script that generates the dataset (fixed random seed, fully reproducible) |
-| `funnel_analysis.sql` | SQL schema + queries: funnel conversion/drop-off, device/traffic-source/category/user-type segmentation, AOV, monthly trend |
+| `funnel_analysis.sql` | SQL schema + queries: funnel conversion/drop-off, device/traffic-source/category/user-type segmentation, AOV, monthly trend || `funnel_analysis.sql` | SQL schema + queries: ... |
+| `Ecommerce_Funnel_Analysis.xlsx` | Excel workbook ... |
 | `Ecommerce_Funnel_Analysis.xlsx` | Excel workbook — raw data + live formula-driven analysis tabs (SUMIFS/AVERAGEIFS, no hardcoded numbers) |
 
 ### Dataset schema
